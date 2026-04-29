@@ -2,6 +2,16 @@
 CREATE DATABASE IF NOT EXISTS locadora_veiculos;
 USE locadora_veiculos;
 
+-- 1. Tabela de Administradores (NOVA - Independente)
+CREATE TABLE Administradores (
+    id_admin INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL,
+    nivel_acesso ENUM('Super', 'Gerente') DEFAULT 'Gerente',
+    data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
 -- 2. Tabela de Categorias (Independente)
 CREATE TABLE Categorias (
     id_categoria INT AUTO_INCREMENT PRIMARY KEY,
